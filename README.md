@@ -11,7 +11,7 @@ Black Metal Cat Bot for Telegram.
 - Ask me for some new Black Metal, like this "BM!"
 - I will search the youtube channels ([Black Metal Promotion](https://www.youtube.com/channel/UCzCWehBejA23yEz3zp7jlcg) and [Atmospheric Black Metal](https://www.youtube.com/channel/UCDLkzWN1rHY4eYkGnVruHVw))
 - ... and I will paste some new music into Telegram Channel
-- ... together with some randomize Black Metal quote, like "", see more [here](https://steemit.com/music/@worldofmusic/black-metal-most-creepy-quotes)
+- ... together with a random Black Metal quote, like *"The problem with most Norwigian bands is that their singers sound like Popay"* - **Cronos from Venom shared his thoughts in 1999**, see more [here](https://steemit.com/music/@worldofmusic/black-metal-most-creepy-quotes)
 
 ## Goals
 
