@@ -1,4 +1,4 @@
-from src.config import TOKEN, bot
+from src.config import BMCAT_APIKEY, bot
 from flask import request
 
 import telegram
@@ -11,7 +11,7 @@ def create_host(app):
 
 
 def register_handler(app, handler):
-    app.add_url_rule('/' + TOKEN, 'handler', handler, methods=['POST'])
+    app.add_url_rule('/' + BMCAT_APIKEY, 'handler', handler, methods=['POST'])
 
 
 # "echo" chatbot
