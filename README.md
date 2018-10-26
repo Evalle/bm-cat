@@ -7,7 +7,7 @@ Black Metal Cat Bot for Telegram.
 <img src="https://user-images.githubusercontent.com/2839811/47450333-4589fb80-d7c5-11e8-85e9-9d242fc01063.jpg" alt="BM cat" width="200" height="200">  
 
 - Telegram Bot
-- written in Python? 
+- written in Python 3.7
 - Ask me for some new Black Metal, like this "BM!"
 - I will search the youtube channels ([Black Metal Promotion](https://www.youtube.com/channel/UCzCWehBejA23yEz3zp7jlcg) and [Atmospheric Black Metal](https://www.youtube.com/channel/UCDLkzWN1rHY4eYkGnVruHVw))
 - ... and I will paste some new music into Telegram Channel
@@ -15,7 +15,7 @@ Black Metal Cat Bot for Telegram.
 
 ## Goals
 
-- learn some Python?
+- learn some Python
 - learn some GitHub Tricks
 - find some new Black Metal bands
 - participate in Hacktoberfest
