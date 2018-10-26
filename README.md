@@ -15,7 +15,7 @@ Black Metal Cat Bot for Telegram.
 
 ## Goals
 
-- learn some Python
-- learn some GitHub Tricks
-- find some new Black Metal bands
+- learn Python
+- learn GitHub workflow
+- find some new awesome Black Metal bands
 - participate in Hacktoberfest
