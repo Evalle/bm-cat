@@ -14,6 +14,7 @@ def load_videos(api_key, channels):
 
     return videos
 
+
 def _get_channel_videos(youtube, channel_id):
     videos = []
 
@@ -31,12 +32,14 @@ def _get_channel_videos(youtube, channel_id):
 
     return videos
 
+
 def _execute_request(youtube, channel_id):
     return youtube.search().list(
         part='id,snippet',
         maxResults=50,
         channelId=channel_id
     ).execute()
+
 
 def _parse(search_response):
     videos = []
