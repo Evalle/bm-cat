@@ -8,10 +8,10 @@ if __name__ == "__main__":
     updater = Updater(BMCAT_APIKEY)
 
     # delete webhook before new assigning
-    #bot.deleteWebhook()
+    bot.deleteWebhook()
 
     # set new webhook
-    #bot.setWebhook(WEBHOOK_URLBASE+WEBHOOK_URLPATH, certificate=open(BMCAT_SSLCERT_PATH, 'rb'))
+    bot.setWebhook(WEBHOOK_URLBASE+WEBHOOK_URLPATH, certificate=open(BMCAT_SSLCERT_PATH, 'rb'))
     # build and run server
     hostbuilder.create_host(app).run(host=WEBHOOK_LISTEN,
                                      port=PORT,
