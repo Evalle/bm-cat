@@ -9,7 +9,6 @@ def get_all():
             return json.load(file)
         except FileNotFoundError:
             print("No such file")
-            sys.exit(1)
 
 
 def save(obj):

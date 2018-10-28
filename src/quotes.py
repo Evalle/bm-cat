@@ -1,24 +1,16 @@
 #!/usr/bin/env python3
-import sys
 import random
-import dbcontext
-import json
 
 
 # For now, quotes are stored in txt file
 
-def random_quote(filename):
+def random_quote(data_provider):
     """
     random_quote(filename) - returns random quota from filename
 
     Arguments:
     - filename - path to file with quotes
     """
-    dbcontext.connection_string = filename
-    quotes = dbcontext.get_all()
+    quotes = data_provider.get_all()
 
     return random.choice(quotes)
-
-
-filename = "../quotes.txt"
-print(random_quote(filename))
