@@ -6,10 +6,10 @@ import random
 
 def random_quote(data_provider):
     """
-    random_quote(filename) - returns random quota from filename
+    random_quote(data_provider) - returns random quota from some data source
 
     Arguments:
-    - filename - path to file with quotes
+    - data_provider - some data source
     """
     quotes = data_provider.get_all()
 
