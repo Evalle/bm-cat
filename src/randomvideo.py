@@ -1,8 +1,9 @@
 import urllib.request
 from random import randrange
 import json
+from os import environ
 
-api_key = "{API_KEY}"
+api_key = environ['BM_YOUTUBE_API_KEY']
 
 
 def random_video():
