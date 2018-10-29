@@ -16,5 +16,12 @@ BMCAT_PRIVATEKEY_PATH = environ.get('BM_CAT_PRIVATE_KEY_PATH', '')
 
 app = Flask(__name__)
 
-global bot
-bot = telegram.Bot(token=BMCAT_APIKEY)
+
+def get_bot():
+    try:
+        return telegram.Bot(BMCAT_APIKEY)
+    except telegram.error.InvalidToken:
+        return None
+
+
+bot = get_bot()
