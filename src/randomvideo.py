@@ -3,7 +3,7 @@ from random import randrange
 import json
 from os import environ
 
-api_key = environ['BM_YOUTUBE_API_KEY']
+api_key = environ.get('BM_YOUTUBE_API_KEY', 'yt_api_key_stub')
 
 
 def random_video():

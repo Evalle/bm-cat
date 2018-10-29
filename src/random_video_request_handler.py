@@ -1,5 +1,5 @@
 import telegram
-import randomvideo
+from src import randomvideo
 import re
 
 regex = 'bm[\.\?\!]?'
