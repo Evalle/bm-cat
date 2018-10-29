@@ -12,10 +12,10 @@ def test_post_register_handler():
     client = app.test_client()
     test_post_register_handler.res = False
 
-    def chage_res():
+    def change_res():
         test_post_register_handler.res = True
 
-    hostbuilder.register_handler(app, chage_res)
+    hostbuilder.register_handler(app, change_res)
 
     client.post('/%s' % config.BMCAT_APIKEY)
     assert test_post_register_handler.res
@@ -30,10 +30,10 @@ def test_get_register_handler():
     client = app.test_client()
     test_get_register_handler.res = False
 
-    def chage_res():
+    def change_res():
         test_get_register_handler.res = True
 
-    hostbuilder.register_handler(app, chage_res)
+    hostbuilder.register_handler(app, change_res)
 
     client.get('/%s' % config.BMCAT_APIKEY)
     assert not test_get_register_handler.res
