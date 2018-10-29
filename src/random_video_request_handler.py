@@ -5,17 +5,13 @@ import re
 regex = 'bm[\.\?\!]?'
 
 
-def response_random_video(request, bot):
+def response_random_video(update):
     """
     response_random_video(request, bot) - sends random video to telegram chat
 
-    :param request: web request from telegram bot
-    :param bot: telegram bot
-    :return: void
+    :param update: web request from telegram bot
+    :return: link to YouTube Video
     """
-
-    # retrieve the message in JSON and then transform it to Telegram object
-    update = telegram.Update.de_json(request.get_json(force=True), bot=bot)
 
     chat_id = update.message.chat.id
     user = update.message.chat.username
@@ -29,4 +25,5 @@ def response_random_video(request, bot):
 
         # repeat the same message back (echo)
         print('Sending link %s to %s' % (video_link, user))
-        bot.sendMessage(chat_id=chat_id, text=video_link)
+        return video_link
+    return None

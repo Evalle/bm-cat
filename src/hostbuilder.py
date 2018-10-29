@@ -31,6 +31,9 @@ def echo_telegram_response(request, bot):
 def webhook_handler():
     if request.method == "POST":
         # echo_telegram_response(request, bot)
-        response_random_video(request, bot);
+        update = telegram.Update.de_json(request.get_json(force=True), bot=bot)
+        video = response_random_video(update);
+        if video is not None:
+            bot.send_message(chat_id=update.message.chat.id, text=video)
 
     return 'ok'
