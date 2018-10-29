@@ -15,4 +15,5 @@ echo_handler = MessageHandler(Filters.text, echo)
 dispatcher.add_handler(echo_handler)
 updater.start_polling()
 
-# updater.stop() don't forget stop pooling when your stop playing
+# blocks current thread and allow to terminate updater with current script execution thread
+updater.idle()
