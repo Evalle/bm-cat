@@ -7,6 +7,10 @@ from telegram.ext import Updater
 if __name__ == "__main__":
     updater = Updater(BMCAT_APIKEY)
 
+    if bot is None:
+        raise ValueError('Telegram bot is not initialised')
+        sys.exit(1)
+
     # delete webhook before new assigning
     bot.deleteWebhook()
 
