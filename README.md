@@ -2,6 +2,9 @@
 
 Black Metal Cat Bot for Telegram.
 
+### Build Status
+[![Build Status](https://travis-ci.com/Evalle/bm-cat.svg?branch=master)](https://travis-ci.com/Evalle/bm-cat)
+
 ## Whoami
 
 <img src="https://user-images.githubusercontent.com/2839811/47450333-4589fb80-d7c5-11e8-85e9-9d242fc01063.jpg" alt="BM cat" width="200" height="200">  
