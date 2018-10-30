@@ -1,5 +1,6 @@
 from os import environ
-import telegram
+from src.data_provider import DataProvider
+from src.bm_cat_bot import BMCatBot
 from flask import Flask
 
 PORT = int(environ.get('PORT', '5000'))
@@ -16,12 +17,7 @@ BMCAT_PRIVATEKEY_PATH = environ.get('BM_CAT_PRIVATE_KEY_PATH', '')
 
 app = Flask(__name__)
 
+QUOTES = '../quotes.txt'
+quotes_file_provider = DataProvider(QUOTES)
 
-def get_bot():
-    try:
-        return telegram.Bot(BMCAT_APIKEY)
-    except telegram.error.InvalidToken:
-        return None
-
-
-bot = get_bot()
+bmcat_bot = BMCatBot(BMCAT_APIKEY, quotes_file_provider)

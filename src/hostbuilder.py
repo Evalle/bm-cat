@@ -1,4 +1,4 @@
-from src.config import BMCAT_APIKEY, bot
+from src.config import BMCAT_APIKEY, bmcat_bot
 from flask import request
 
 import telegram
@@ -38,27 +38,10 @@ def bm_cat_handler():
     :return: OK - 200
     """
     if request.method == "POST":
-        update = telegram.Update.de_json(request.get_json(force=True), bot=bot)
-        inline_query = update.inline_query.query
-        video_link = response_random_video(update)
+        update = telegram.Update.de_json(request.get_json(force=True), bot=bmcat_bot.get_bot())
 
-        if video_link is not None:
-            send_message(inline_query is not None, update, video_link)
+        bmcat_bot.send_random_video(update)
 
     return 'ok'
 
 
-def send_message(inline, update, video_link):
-    if inline:
-        results = list()
-        results.append(
-            InlineQueryResultArticle(
-                id=update.inline_query.query.upper(),
-                title='send link',
-                input_message_content=InputTextMessageContent(video_link)
-            )
-        )
-        # 10 seconds cache
-        bot.answer_inline_query(update.inline_query.id, results, cache_time=10)
-    else:
-        bot.send_message(chat_id=update.message.chat.id, text=video_link)
