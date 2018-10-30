@@ -13,7 +13,6 @@ def response_random_video(update):
     :return: link to YouTube Video
     """
 
-    chat_id = update.message.chat.id
     user = update.message.chat.username
     message = update.message.text
 

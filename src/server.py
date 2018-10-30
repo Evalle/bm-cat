@@ -1,4 +1,4 @@
-import hostbuilder
+from src import hostbuilder
 from src.config import BMCAT_APIKEY, WEBHOOK_URLBASE, WEBHOOK_URLPATH, BMCAT_SSLCERT_PATH, WEBHOOK_LISTEN,\
     BMCAT_PRIVATEKEY_PATH, PORT, app, bot
 from telegram.ext import Updater
@@ -8,7 +8,7 @@ if __name__ == "__main__":
     updater = Updater(BMCAT_APIKEY)
 
     if bot is None:
-        raise ValueError('Telegram bot is not initialised')
+        raise ValueError('Telegram bot is not initialized')
         sys.exit(1)
 
     # delete webhook before new assigning

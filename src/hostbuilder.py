@@ -5,33 +5,39 @@ import telegram
 from src.random_video_request_handler import response_random_video
 
 
-# server configuration point
 def create_host(app):
-    register_handler(app, webhook_handler)
+    """
+    configuration point of bm_cat server
+    you can do everything with app at this point to build host
+
+    :param app: flask server instance
+    :return: app
+    """
+    register_handler(app, bm_cat_handler)
     return app
 
 
 def register_handler(app, handler):
+    """
+    registration of handler for bm_cat bot server
+    only POST requests will processed
+
+    :param app: instance of flask server
+    :param handler: web request handler
+    :return: void
+    """
     app.add_url_rule('/' + BMCAT_APIKEY, 'handler', handler, methods=['POST'])
 
 
-def echo_telegram_response(request, bot):
-    # retrieve the message in JSON and then transform it to Telegram object
-    update = telegram.Update.de_json(request.get_json(force=True), bot=bot)
+def bm_cat_handler():
+    """
+    bm_cat_handler() - root handler of bm_cat webhook
 
-    chat_id = update.message.chat.id
-
-    text = update.message.text
-
-    # repeat the same message back (echo)
-    bot.sendMessage(chat_id=chat_id, text=text)
-
-
-# "echo" chatbot
-def webhook_handler():
+    :return: OK - 200
+    """
     if request.method == "POST":
         update = telegram.Update.de_json(request.get_json(force=True), bot=bot)
-        video_link = response_random_video(update);
+        video_link = response_random_video(update)
         if video_link is not None:
             bot.send_message(chat_id=update.message.chat.id, text=video_link)
 
