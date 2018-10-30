@@ -1,17 +1,20 @@
 from src.config import BMCAT_APIKEY
-from src import random_video_request_handler, quotes, data_provider
-from telegram.ext import Updater, MessageHandler, Filters
+from src import random_video_request_handler, quotes
+from telegram.ext import Updater
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 from telegram.ext import InlineQueryHandler
 
 
 # long pooling telegram bot for testing purposes
+from src.data_provider import DataProvider
+
 updater = Updater(token=BMCAT_APIKEY)
 dispatcher = updater.dispatcher
-data_provider.connection_string = '../quotes.txt'
+QUOTES = '../quotes.txt'
 
 
 def inline_bm(bot, update):
+    data_provider = DataProvider(QUOTES)
     query = update.inline_query.query
     if not query:
         return
