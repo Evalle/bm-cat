@@ -2,8 +2,6 @@ import telegram
 from src import randomvideo
 import re
 
-regex = 'bm[\.\?\!]?'
-
 
 def response_random_video(update):
     """
@@ -12,17 +10,18 @@ def response_random_video(update):
     :param update: web request from telegram bot
     :return: link to YouTube Video
     """
+    regex = 'bm[\.\?\!]?'
 
-    user = update.message.chat.username
-    message = update.message.text
+    if update.message is None:
+        message = update.inline_query.query
+    else:
+        message = update.message.text
+        user = update.message.chat.username
+        print('Received message %s from %s' % (message, user))
 
-    print('Received message %s from %s' % (message, user))
-
-    if re.match(regex, message):
+    if re.match(regex, message, re.IGNORECASE):
 
         video_link = randomvideo.random_video()
 
-        # repeat the same message back (echo)
-        print('Sending link %s to %s' % (video_link, user))
         return video_link
     return None
