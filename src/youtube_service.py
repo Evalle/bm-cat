@@ -36,12 +36,12 @@ def _get_channel_videos(youtube, channel_id):
     return videos
 
 
-def _execute_request(youtube, channel_id, page_token = ''):
+def _execute_request(youtube, channel_id, page_token=''):
     return youtube.search().list(
         part='id,snippet',
         maxResults=50,
         channelId=channel_id,
-        pageToken = page_token
+        pageToken=page_token
     ).execute()
 
 
@@ -51,6 +51,7 @@ def _parse(search_response):
         if search_result['id']['kind'] == 'youtube#video':
             video = {'Id': search_result['id']['videoId'],
                      'Title': search_result['snippet']['title'],
-                     'PublishedAt': search_result['snippet']['publishedAt']}
+                     'PublishedAt': search_result['snippet']['publishedAt'],
+                     'ChannelId': search_result['snippet']['channelId']}
             videos[video['Id']] = video
     return videos
