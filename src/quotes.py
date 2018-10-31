@@ -11,6 +11,8 @@ def random_quote(data_provider):
     Arguments:
     - data_provider - some data source
     """
-    quotes = data_provider.get_all()
-
-    return random.choice(quotes)
+    try:
+        quotes = data_provider.get_all()
+        return random.choice(quotes)
+    except IndexError:
+        print('Quotes list is empty')
