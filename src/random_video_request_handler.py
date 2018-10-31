@@ -1,4 +1,3 @@
-import telegram
 from src import randomvideo
 import re
 

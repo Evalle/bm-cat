@@ -1,8 +1,7 @@
-from src.config import BMCAT_APIKEY, bot
+from src.config import BMCAT_APIKEY, bmcat_bot
 from flask import request
 
 import telegram
-from src.random_video_request_handler import response_random_video
 
 
 def create_host(app):
@@ -36,9 +35,10 @@ def bm_cat_handler():
     :return: OK - 200
     """
     if request.method == "POST":
-        update = telegram.Update.de_json(request.get_json(force=True), bot=bot)
-        video_link = response_random_video(update)
-        if video_link is not None:
-            bot.send_message(chat_id=update.message.chat.id, text=video_link)
+        update = telegram.Update.de_json(request.get_json(force=True), bot=bmcat_bot.get_bot())
+
+        bmcat_bot.send_random_video(update)
 
     return 'ok'
+
+
