@@ -17,7 +17,7 @@ BMCAT_PRIVATEKEY_PATH = environ.get('BM_CAT_PRIVATE_KEY_PATH', '')
 
 app = Flask(__name__)
 
-QUOTES = '../quotes.txt'
-quotes_file_provider = DataProvider(QUOTES)
+quotes = '../quotes.txt'
+quotes_file_provider = DataProvider(quotes)
 
 bmcat_bot = BMCatBot(BMCAT_APIKEY, quotes_file_provider)
