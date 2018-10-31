@@ -1,7 +1,6 @@
 from src import hostbuilder
-from src.config import BMCAT_APIKEY, WEBHOOK_URLBASE, WEBHOOK_URLPATH, BMCAT_SSLCERT_PATH, WEBHOOK_LISTEN,\
+from src.config import WEBHOOK_URLBASE, WEBHOOK_URLPATH, BMCAT_SSLCERT_PATH, WEBHOOK_LISTEN,\
     BMCAT_PRIVATEKEY_PATH, PORT, app, bmcat_bot
-from telegram.ext import Updater
 
 # web server entry point
 if __name__ == "__main__":

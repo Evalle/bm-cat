@@ -2,9 +2,6 @@ from src.config import BMCAT_APIKEY, bmcat_bot
 from flask import request
 
 import telegram
-from telegram import InlineQueryResultArticle, InputTextMessageContent
-
-from src.random_video_request_handler import response_random_video
 
 
 def create_host(app):
