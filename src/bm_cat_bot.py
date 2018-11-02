@@ -8,10 +8,11 @@ class BMCatBot:
     """
     represents entire logic of bm cat bot
     """
-    def __init__(self, api_key, quotes_provider):
+
+    def __init__(self, api_key, data_provider):
         self.bot = None
         self.api_key = api_key
-        self.data_provider = quotes_provider
+        self.data_provider = data_provider
 
     def send_random_video(self, update, bot=None):
         """
@@ -30,7 +31,7 @@ class BMCatBot:
                 except telegram.error.InvalidToken:
                     return
 
-        result_message = self.__get_video_link_message(update, self.data_provider)
+        result_message = self.__get_video_link_message(update)
         if not result_message:
             return
 
@@ -71,17 +72,15 @@ class BMCatBot:
         # set new webhook
         bot.setWebhook(web_hook_url, certificate=open(ssl_certificate_path, 'rb'))
 
-    @staticmethod
-    def __get_video_link_message(update, quotes_provider):
+    def __get_video_link_message(self, update):
         """
         create string with random quote and random video from YT
 
         :param update: bot update structure
-        :param quotes_provider: provider of quotes
         :return: string
         """
         video_link = random_video_request_handler.response_random_video(update)
         if not video_link:
             return None
-        random_quote = quotes.random_quote(quotes_provider)
+        random_quote = quotes.random_quote(self.data_provider['quotes'])
         return '%s\n\r%s' % (random_quote, video_link)

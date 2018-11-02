@@ -6,12 +6,15 @@ class DataProvider:
         self.connection_string = connection_string
 
     def get_all(self):
-        with open(self.connection_string, 'r') as file:
-            try:
+        try:
+            with open(self.connection_string, 'r') as file:
                 return json.load(file)
-            except FileNotFoundError:
-                print("No such file")
+        except (FileNotFoundError, TypeError, ValueError) as e:
+            print('Could not get data from storage ' + self.connection_string + ':' + str(e))
 
     def save(self, obj):
-        with open(self.connection_string, 'w') as file:
-            json.dump(obj, file)
+        try:
+            with open(self.connection_string, 'w') as file:
+                json.dump(obj, file)
+        except FileNotFoundError as e:
+            print('Not such file:' + str(e))

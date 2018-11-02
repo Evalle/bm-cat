@@ -4,15 +4,17 @@ import random
 
 # For now, quotes are stored in txt file
 
-def random_quote(data_provider):
+def random_quote(quotes):
     """
-    random_quote(data_provider) - returns random quota from some data source
+    random_quote(quotes) - returns random quota from dict of quotes
 
     Arguments:
-    - data_provider - some data source
+    - quotes - dict of quotes
     """
     try:
-        quotes = data_provider.get_all()
         return random.choice(quotes)
     except IndexError:
-        print('Quotes list is empty')
+        print('Quotes dict is empty')
+
+x = random_quote({0: 'test1', 1 : 'test2'})
+print(x)
