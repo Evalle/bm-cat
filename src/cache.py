@@ -1,11 +1,11 @@
-from src.data_provider import DataProvider
 from src.utils.singleton import Singleton
 
 
 class Cache(metaclass=Singleton):
     def __init__(self, data_provider):
+        self.cache = {}
         self.data_provider = data_provider
-        self.cache = self.refresh()
+        self.refresh()
 
     def snapshot(self):
         self.data_provider.save(self.cache)
@@ -17,12 +17,9 @@ class Cache(metaclass=Singleton):
         self.cache[key].update(value)
 
     def refresh(self):
-        return self.data_provider.get_all()
+        all_data = self.data_provider.get_all()
+        if all_data:
+            self.cache.update(all_data)
 
 
-storage = '../storage.txt'
-c = Cache(DataProvider(storage))
-# c.getall()
-# c.snapshot()
-c.add('quotes', {15: 'test'})
-print(c)
+

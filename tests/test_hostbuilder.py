@@ -1,6 +1,5 @@
-from src import hostbuilder
+from src import hostbuilder, config
 import flask
-from src import config
 
 
 def test_post_register_handler():
