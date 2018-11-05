@@ -11,8 +11,10 @@ class QuotesIntegrationTestCase(unittest.TestCase):
     def test_is_quote_in_datasource(self):
         """Is quote in datasource?"""
         Singleton._instances = {}
-        quotes_file_provider = DataProvider('../storage.txt')
+        quotes_file_provider = DataProvider('storage.txt')
         cache = Cache(quotes_file_provider)
         self.assertIn(quotes.get_random(cache), list(cache.get('quotes').values()))
 
 
+q = QuotesIntegrationTestCase()
+q.test_is_quote_in_datasource()
