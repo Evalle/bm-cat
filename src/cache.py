@@ -1,7 +1,4 @@
-from src.utils.singleton import Singleton
-
-
-class Cache(metaclass=Singleton):
+class Cache():
     def __init__(self, data_provider):
         self.cache = {}
         self.data_provider = data_provider
@@ -20,6 +17,3 @@ class Cache(metaclass=Singleton):
         all_data = self.data_provider.get_all()
         if all_data:
             self.cache.update(all_data)
-
-
-
