@@ -6,7 +6,7 @@ import random
 
 def get_random(cache):
     """
-    random_quote(cache) - returns random quota from cache
+    get_random(cache) - returns random quota from cache
 
     Arguments:
     - cache - global cache
