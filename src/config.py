@@ -1,4 +1,6 @@
 from os import environ
+
+from src.cache import Cache
 from src.data_provider import DataProvider
 from src.bm_cat_bot import BMCatBot
 from flask import Flask
@@ -17,7 +19,8 @@ BMCAT_PRIVATEKEY_PATH = environ.get('BM_CAT_PRIVATE_KEY_PATH', '')
 
 app = Flask(__name__)
 
-quotes = '../quotes.txt'
-quotes_file_provider = DataProvider(quotes)
+connection_string = '../storage.txt'
+data_provider = DataProvider(connection_string)
+cache = Cache(data_provider)
 
-bmcat_bot = BMCatBot(BMCAT_APIKEY, quotes_file_provider)
+bmcat_bot = BMCatBot(BMCAT_APIKEY, cache)

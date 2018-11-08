@@ -4,15 +4,14 @@ import random
 
 # For now, quotes are stored in txt file
 
-def random_quote(data_provider):
+def get_random(cache):
     """
-    random_quote(data_provider) - returns random quota from some data source
+    get_random(cache) - returns random quota from cache
 
     Arguments:
-    - data_provider - some data source
+    - cache - global cache
     """
     try:
-        quotes = data_provider.get_all()
-        return random.choice(quotes)
+        return random.choice(list(cache.get('quotes').values()))
     except IndexError:
-        print('Quotes list is empty')
+        print('Quotes dict is empty')
