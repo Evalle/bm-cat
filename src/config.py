@@ -1,3 +1,4 @@
+import logging
 from os import environ
 
 from src.cache import Cache
@@ -17,10 +18,15 @@ WEBHOOK_URLPATH = "/%s" % BMCAT_APIKEY
 BMCAT_SSLCERT_PATH = environ.get('BM_CAT_SSL_CERTIFICATE_PATH', '')
 BMCAT_PRIVATEKEY_PATH = environ.get('BM_CAT_PRIVATE_KEY_PATH', '')
 
+log_fmt = '%(asctime)-15s %(levelname)s: %(message)s'
+logging.basicConfig(format=log_fmt)
+logger = logging.getLogger(__name__)
+logger.setLevel(level=20)
+
 app = Flask(__name__)
 
 connection_string = '../storage.txt'
 data_provider = DataProvider(connection_string)
 cache = Cache(data_provider)
 
-bmcat_bot = BMCatBot(BMCAT_APIKEY, cache)
+bmcat_bot = BMCatBot(BMCAT_APIKEY, cache, logger)

@@ -20,7 +20,10 @@ def inline_bm(bot, update):
 
 def text_bm(bot, update):
     if not is_inline(update):
-        bmcat_bot.send_random_video(update, bot)
+        try:
+            bmcat_bot.send_random_video(update, bot)
+        except ValueError as err:
+            print(err)
 
 
 inline_handler = InlineQueryHandler(inline_bm)

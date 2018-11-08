@@ -1,3 +1,5 @@
+import logging
+import sys
 import telegram
 from telegram import Bot
 from src import quotes, videos
@@ -10,10 +12,11 @@ class BMCatBot:
     represents entire logic of bm cat bot
     """
 
-    def __init__(self, api_key, data_provider):
+    def __init__(self, api_key, data_provider, logger):
         self.bot = None
         self.api_key = api_key
         self.data_provider = data_provider
+        self.logger = logger
 
     def send_random_video(self, update, bot=None):
         """
@@ -32,8 +35,14 @@ class BMCatBot:
                 except telegram.error.InvalidToken:
                     return
 
-        result_message = self._get_result_message(update)
+        try:
+            self.logger.info('Handling request')
+            result_message = self._get_result_message(update)
+            self.logger.info('Request is handled, result: %s' % result_message)
+        except:
+            self.logger.error('Unhandled exception was caught: %s' % sys.exc_info()[0])
         if not result_message:
+            self.logger.warning('Cannot produce result message')
             return
 
         query = update.inline_query
@@ -60,7 +69,7 @@ class BMCatBot:
         try:
             self.bot = Bot(self.api_key)
         except telegram.error.InvalidToken:
-            print('Cannot initialize telegram bot with given api_key')
+            self.logger.error('Cannot initialize telegram bot with given api_key')
             raise telegram.error.InvalidToken
         return self.bot
 
@@ -87,14 +96,16 @@ class BMCatBot:
         else:
             message = update.message.text
             user = update.message.chat.username
-            print('Received message %s from %s' % (message, user))
+            self.logger.info('Received message %s from %s' % (message, user))
 
         if re.match(regex, message, re.IGNORECASE):
-            return self._get_message_body
+            return self._get_message_body()
 
     def _get_message_body(self):
         video_link = videos.get_random(self.data_provider)
+        self.logger.info('Video link is: %s' % video_link)
         random_quote = quotes.get_random(self.data_provider)
+        self.logger.info('Quote is: %s' % random_quote)
         if video_link and random_quote:
             return '%s\n\r%s' % (random_quote, video_link)
         return None
