@@ -15,3 +15,4 @@ def get_random(cache):
         return random.choice(list(cache.get('quotes').values()))
     except IndexError:
         print('Quotes dict is empty')
+    return None
