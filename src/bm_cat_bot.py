@@ -40,7 +40,8 @@ class BMCatBot:
             result_message = self._get_result_message(update)
             self.logger.info('Request is handled, result: %s' % result_message)
         except:
-            self.logger.error('Unhandled exception was caught: %s' % sys.exc_info()[0])
+            self.logger.error(
+                'Unhandled exception was caught: %s' % sys.exc_info()[0])
         if not result_message:
             self.logger.warning('Cannot produce result message')
             return
@@ -52,13 +53,14 @@ class BMCatBot:
                 InlineQueryResultArticle(
                     id=update.inline_query.query.upper(),
                     title='send link',
-                    input_message_content=InputTextMessageContent(result_message)
-                )
-            )
+                    input_message_content=InputTextMessageContent(
+                        result_message)))
             # 10 seconds cache
-            bot.answer_inline_query(update.inline_query.id, results, cache_time=10)
+            bot.answer_inline_query(
+                update.inline_query.id, results, cache_time=10)
         else:
-            bot.send_message(chat_id=update.message.chat.id, text=result_message)
+            bot.send_message(
+                chat_id=update.message.chat.id, text=result_message)
 
     def get_bot(self):
         """
@@ -69,7 +71,8 @@ class BMCatBot:
         try:
             self.bot = Bot(self.api_key)
         except telegram.error.InvalidToken:
-            self.logger.error('Cannot initialize telegram bot with given api_key')
+            self.logger.error(
+                'Cannot initialize telegram bot with given api_key')
             raise telegram.error.InvalidToken
         return self.bot
 
@@ -80,7 +83,8 @@ class BMCatBot:
         bot.deleteWebhook()
 
         # set new webhook
-        bot.setWebhook(web_hook_url, certificate=open(ssl_certificate_path, 'rb'))
+        bot.setWebhook(
+            web_hook_url, certificate=open(ssl_certificate_path, 'rb'))
 
     def _get_result_message(self, update):
         """

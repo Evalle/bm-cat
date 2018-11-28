@@ -14,15 +14,16 @@ def random_video():
 
     response = (urllib.request.urlopen(
         "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails%2Cstatus&maxResults=50"
-        "&playlistId=UUzCWehBejA23yEz3zp7jlcg&key=" + api_key).read()).decode(
-        "utf-8")
+        "&playlistId=UUzCWehBejA23yEz3zp7jlcg&key=" +
+        api_key).read()).decode("utf-8")
     decoded = json.loads(response)
     videolist = decoded['items']
     response = (urllib.request.urlopen(
         "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails%2Cstatus&maxResults=50"
-        "&playlistId=UUDLkzWN1rHY4eYkGnVruHVw&key=" + api_key).read()).decode(
-        "utf-8")
+        "&playlistId=UUDLkzWN1rHY4eYkGnVruHVw&key=" +
+        api_key).read()).decode("utf-8")
     decoded = json.loads(response)
     videolist += decoded['items']
     chosen_one = randrange(len(videolist))
-    return "https://youtu.be/" + videolist[chosen_one]['contentDetails']['videoId']
+    return "https://youtu.be/" + videolist[chosen_one]['contentDetails'][
+        'videoId']

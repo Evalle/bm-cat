@@ -10,7 +10,8 @@ class DataProvider:
             with open(self.connection_string, 'r') as file:
                 return json.load(file)
         except (FileNotFoundError, TypeError, ValueError) as e:
-            print('Could not get data from storage ' + self.connection_string + ':' + str(e))
+            print('Could not get data from storage ' + self.connection_string +
+                  ':' + str(e))
 
     def save(self, obj):
         try:

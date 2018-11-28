@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import random
 
-
 # For now, quotes are stored in txt file
+
 
 def get_random(cache):
     """

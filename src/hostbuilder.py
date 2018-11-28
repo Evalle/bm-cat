@@ -35,10 +35,9 @@ def bm_cat_handler():
     :return: OK - 200
     """
     if request.method == "POST":
-        update = telegram.Update.de_json(request.get_json(force=True), bot=bmcat_bot.get_bot())
+        update = telegram.Update.de_json(
+            request.get_json(force=True), bot=bmcat_bot.get_bot())
 
         bmcat_bot.send_random_video(update)
 
     return 'ok'
-
-

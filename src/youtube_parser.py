@@ -6,7 +6,8 @@ YOUTUBE_API_VERSION = 'v3'
 
 
 def load_videos(api_key, channels):
-    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=api_key)
+    youtube = build(
+        YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=api_key)
 
     videos = {}
     for channel in channels:
@@ -23,7 +24,8 @@ def _get_channel_videos(youtube, channel_id):
         try:
             search_response = _execute_request(youtube, channel_id, page_token)
         except HttpError as e:
-            print('An HTTP error %d occurred:\n%s' % (e.resp.status, e.content))
+            print(
+                'An HTTP error %d occurred:\n%s' % (e.resp.status, e.content))
             break
 
         videos.update(_parse(search_response))
@@ -41,17 +43,18 @@ def _execute_request(youtube, channel_id, page_token=''):
         part='id,snippet',
         maxResults=50,
         channelId=channel_id,
-        pageToken=page_token
-    ).execute()
+        pageToken=page_token).execute()
 
 
 def _parse(search_response):
     videos = {}
     for search_result in search_response.get('items', []):
         if search_result['id']['kind'] == 'youtube#video':
-            video = {'Id': search_result['id']['videoId'],
-                     'Title': search_result['snippet']['title'],
-                     'PublishedAt': search_result['snippet']['publishedAt'],
-                     'ChannelId': search_result['snippet']['channelId']}
+            video = {
+                'Id': search_result['id']['videoId'],
+                'Title': search_result['snippet']['title'],
+                'PublishedAt': search_result['snippet']['publishedAt'],
+                'ChannelId': search_result['snippet']['channelId']
+            }
             videos[video['Id']] = video
     return videos
