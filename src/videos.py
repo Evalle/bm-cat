@@ -11,4 +11,3 @@ def get_random(cache):
     except TypeError as terr:
         print('Get random video error: %s' % terr)
     return None
-
