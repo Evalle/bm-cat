@@ -93,7 +93,7 @@ class BMCatBot:
         :param update: bot update structure
         :return: string
         """
-        regex = 'bm[\.\?\!]?'
+        regex = r"bm[\.\?\!]?"
 
         if update.message is None:
             message = update.inline_query.query

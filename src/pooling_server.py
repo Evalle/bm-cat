@@ -33,5 +33,6 @@ text_bm_handler = MessageHandler(Filters.text, text_bm)
 dispatcher.add_handler(text_bm_handler)
 updater.start_polling()
 
-# blocks current thread and allow to terminate updater with current script execution thread
+# Blocks current thread and allow to terminate updater with the
+# current script execution thread.
 updater.idle()
