@@ -9,8 +9,6 @@ Black Metal Cat Bot for Telegram
 
 ## Whoami
 
-
-
 - Telegram Bot
 - Written in Python 3
 - you can ask me for some new black metal album via "BM!" message
@@ -18,7 +16,18 @@ Black Metal Cat Bot for Telegram
 - ... and I will paste the link to the new black metal album into Telegram Channel
 - ... together with a funny random Black Metal quote, like *"The problem with most Norwigian bands is that their singers sound like Popay"* - **Cronos from Venom shared his thoughts in 1999**, see more [here](https://steemit.com/music/@worldofmusic/black-metal-most-creepy-quotes)
 
-## Quickstart guide
+## How Does it Work
+
+![GIF](howto.gif)
+
+## How to Use
+
+Just add BM-Cat bot into your chat and start a private conversation with him
+via @.
+
+## Quickstart Guide
+
+If you want to deploy your own Black Metal bot, use the instruction below.
 
 ### Prerequisites
 
