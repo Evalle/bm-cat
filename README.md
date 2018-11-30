@@ -1,4 +1,4 @@
-# BM-cat
+# Black Metal Cat Bot
 
 Black Metal Cat Bot for Telegram.
 
